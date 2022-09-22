@@ -16,7 +16,7 @@ public class Runner {
             List<Car> brandedCars = new ArrayList<>();
 
             for (Car tempCar: cars){
-                if(Objects.equals(tempCar.getBrand(), brand)){
+                if(tempCar.getBrand().equals(brand)){
                     brandedCars.add(tempCar);
                 }
             }
