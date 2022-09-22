@@ -61,12 +61,6 @@ public class Runner {
 
         List<Car> selectedCars = CarController.carsByYearAndCost(cars, yearOfIssue, cost);
 
-        for (Car tempCar: cars){
-            if(Objects.equals(tempCar.getYearOfIssue(), yearOfIssue) && (tempCar.getCost() > cost)) {
-                selectedCars.add(tempCar);
-            }
-        }
-
         if(selectedCars.size() == 0)
             System.out.println("no car fulfils a condition");
         else {
