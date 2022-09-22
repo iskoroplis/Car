@@ -1,5 +1,6 @@
 package main.java;
 
+import main.java.controllers.CarController;
 import main.java.entity.Car;
 
 import java.io.BufferedReader;
@@ -13,13 +14,8 @@ public class Runner {
         System.out.print("Enter brand you want to get cars from: ");
         try {
             String brand = reader.readLine();
-            List<Car> brandedCars = new ArrayList<>();
 
-            for (Car tempCar: cars){
-                if(tempCar.getBrand().equals(brand)){
-                    brandedCars.add(tempCar);
-                }
-            }
+            List<Car> brandedCars = CarController.brandedCars(cars, brand);
 
             if(brandedCars.size() == 0)
                 System.out.println("There are no cars from this brand");
@@ -37,21 +33,13 @@ public class Runner {
     }
 
     public static void taskB(BufferedReader reader, List<Car> cars) throws IOException {
-        int currentYear = Year.now().getValue();
-
         System.out.print("Enter model of the car: ");
         String model = reader.readLine();
 
         System.out.print("Specify amount of years: ");
         int yearsN = Integer.parseInt(reader.readLine());
 
-        List<Car> selectedCars = new ArrayList<>();
-
-        for (Car tempCar: cars){
-            if(Objects.equals(tempCar.getModel(), model) && (currentYear - tempCar.getYearOfIssue()> yearsN)) {
-                selectedCars.add(tempCar);
-            }
-        }
+        List<Car> selectedCars = CarController.carsByModelAndYear(cars, model, yearsN);
 
         if(selectedCars.size() == 0)
             System.out.println("no car fulfils a condition");
@@ -71,7 +59,7 @@ public class Runner {
         System.out.print("Specify price: ");
         int cost = Integer.parseInt(reader.readLine());
 
-        List<Car> selectedCars = new ArrayList<>();
+        List<Car> selectedCars = CarController.carsByYearAndCost(cars, yearOfIssue, cost);
 
         for (Car tempCar: cars){
             if(Objects.equals(tempCar.getYearOfIssue(), yearOfIssue) && (tempCar.getCost() > cost)) {

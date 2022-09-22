@@ -75,13 +75,6 @@ public class Car {
     this.registrationNumber = registrationNumber;
   }
 
-  public void print(){
-    System.out.printf(
-            "[\nid: %d. \nbrand: %s \nyear of issue: %d \ncolor: %s \ncost: %d \nregistration number: %s \n]%n",
-      this.id, this.brand, this.yearOfIssue, this.color, this.cost, this.registrationNumber
-    );
-  }
-
   @Override
   public String toString(){
     return "Car id: " + id +
